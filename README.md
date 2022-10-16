@@ -62,8 +62,8 @@ Not sure what Rock, Paper, Scissors, Lizard, Spock is? [Check out this clip from
 
 ### Links
 
-- Solution: [Frontend Mentor](https://your-solution-url.com)
-- Live Site: [Vercel](https://your-live-site-url.com)
+- Solution: [Frontend Mentor](https://www.frontendmentor.io/solutions/rock-paper-scissors-lizard-spock-V7na0-yYRE)
+- Live Site: [Vercel](https://rock-paper-scissors-lizard-spock-alpha.vercel.app)
 
 ## My process
 
