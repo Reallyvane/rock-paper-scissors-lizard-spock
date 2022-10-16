@@ -58,7 +58,7 @@ Not sure what Rock, Paper, Scissors, Lizard, Spock is? [Check out this clip from
 
 ![Mobile Home Screen](./design/RPSLS%20Mobile%20Home%20Screen.png)
 ![Mobile Rules Screen](./design/RPSLS%20Mobile%20Rules%20Screen.png)
-![Mobile Results Screen](./design/RPSLS%20Mobile%20Results%20Screen.png)
+![Mobile Results Screen](./design/RPSLS%20Mobile%20Results%20screen.png)
 
 ### Links
 
