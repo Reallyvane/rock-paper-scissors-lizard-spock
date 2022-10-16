@@ -1,0 +1,706 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+:root {
+    --scissors-gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+    --paper-gradient: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+    --rock-gradient: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+    --lizard-gradient: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+    --spock-gradient: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+    --dark-text: hsl(229, 25%, 31%);
+    --score-text: hsl(229, 64%, 46%);
+    --header-outline: hsl(217, 16%, 45%);
+    --radial-gradient: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+body {
+    background: var(--radial-gradient);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    border: 2px solid var(--header-outline);
+    border-radius: 15px;
+    width: 51%;
+    margin: 3.5% 0;
+    padding: 1.5% 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: .8;
+    color: white;
+}
+
+h2 {
+    color: var(--score-text);
+    font-size: 1.3em;
+
+}
+
+.score {
+    background: white;
+    padding: 1.5% 7%;
+    border-radius: 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.score p {
+    font-size: 3.6em;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.card-container {
+    background: center no-repeat url(./images/bg-pentagon.svg);
+    width: 100%;
+    height: 470px;
+    position: relative;
+}
+
+.card {
+    cursor: pointer;
+    position: absolute;
+    width: 145px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card::before {
+    background: white;
+    position: absolute;
+    z-index: 1;
+    content: '';
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    box-shadow: inset 0 3px 5px hsl(225, 6%, 73%);
+}
+
+.card img {
+    position: absolute;
+    z-index: 2;
+}
+
+.card.scissors {
+    background: var(--scissors-gradient);
+    box-shadow: 0px 6px 0px 0px hsl(28, 75%, 44%);
+    left: 45%;
+}
+
+.card.paper {
+    background: var(--paper-gradient);
+    box-shadow: 0px 6px 0px 0px hsl(229, 62%, 34%);
+    top: 25%;
+    left: 56%;
+}
+
+.card.rock {
+    background: var(--rock-gradient);
+    box-shadow: 0px 6px 0px 0px hsl(343, 70%, 30%);
+    top: 65%;
+    left: 52%;
+}
+
+.card.lizard {
+    background: var(--lizard-gradient);
+    box-shadow: 0px 6px 0px 0px hsl(259, 48%, 38%);
+    top: 65%;
+    left: 38%;
+}
+
+.card.spock {
+    background: var(--spock-gradient);
+    box-shadow: 0px 6px 0px 0px hsl(197, 54%, 36%);
+    top: 25%;
+    left: 34%;
+}
+
+.rules-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3%;
+    margin-bottom: 1.5%;
+}
+
+section>button {
+    border: 1px solid var(--header-outline);
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    text-transform: uppercase;
+    padding: 0.3% 1.5%;
+}
+
+.results-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.choice {
+    margin: 1% 10%;
+}
+
+.picked .card {
+    position: static;
+    height: 240px;
+    width: 240px;
+    margin-bottom: 40%;
+}
+
+.picked .card img {
+    width: 6%;
+}
+
+.picked .card:before {
+    width: 190px;
+    height: 190px;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 28%;
+}
+
+h3 {
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: 20%;
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 2%;
+}
+
+
+.result button {
+    border: 1px solid var(--header-outline);
+    border-radius: 5px;
+    cursor: pointer;
+    background: white;
+    color: var(--dark-text);
+    text-transform: uppercase;
+    padding: 2% 10%;
+    width: 45%;
+}
+
+.modal.active,
+.modal-bg.active {
+    display: block;
+}
+
+.modal-bg {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 50%);
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    background: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    top: 180px;
+    right: 475px;
+    min-height: 450px;
+}
+
+.modal-layout {
+    display: grid;
+    grid-template-areas: "a b c";
+}
+
+
+.modal .close {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+    grid-area: c;
+}
+
+.modal .rules {
+    color: var(--dark-text);
+    text-transform: uppercase;
+    font-size: 2em;
+    grid-area: a;
+}
+
+.modal .content {
+    position: absolute;
+    text-align: center;
+    margin-top: 12%;
+    grid-area: b;
+}
+
+.hidden {
+    display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+    header {
+        width: 80%;
+    }
+
+    .card {
+        width: 125px;
+        height: 125px;
+    }
+
+    .card::before {
+        width: 95px;
+        height: 95px;
+
+    }
+
+    .modal {
+        right: 400px;
+    }
+
+    .result button {
+        padding: 3% 5%;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+
+    .card.paper {
+        left: 58%;
+    }
+
+    .card.rock {
+        left: 54%;
+    }
+
+    .card.lizard {
+        left: 36%;
+    }
+
+    .card.spock {
+        left: 31%;
+    }
+
+    .modal {
+        right: 345px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+
+    .card.scissors {
+        left: 43%;
+    }
+
+    .card.lizard {
+        left: 32%;
+    }
+
+    .card.spock {
+        left: 30%;
+    }
+
+    .modal {
+        right: 298px;
+    }
+
+    .choice {
+        margin: 1% 5%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    h1,
+    h2 {
+        font-size: 1.4em;
+    }
+
+    .score p {
+        font-size: 2.8em;
+    }
+
+    .card.paper {
+        left: 59%;
+    }
+
+    .card.spock {
+        left: 27%;
+    }
+
+    .modal {
+        right: 250px;
+    }
+
+
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    .card {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card::before {
+        width: 80px;
+        height: 80px;
+
+    }
+
+    .card img {
+        width: 40%;
+    }
+
+    .card-container {
+        height: 400px;
+        background-size: 300px;
+    }
+
+    .card.scissors {
+        top: 4%;
+        left: 43%;
+    }
+
+    .card.paper {
+        top: 30%;
+        left: 61%;
+    }
+
+    .card.rock {
+        top: 70%;
+        left: 53%;
+    }
+
+    .card.lizard {
+        top: 70%;
+        left: 32%;
+    }
+
+    .card.spock {
+        top: 30%;
+        left: 26%;
+    }
+
+    .rules-container {
+        justify-content: center;
+    }
+
+    .rules-container button {
+        padding: 1% 0%;
+        font-size: 1.2em;
+        margin-top: 10%;
+        width: 20%;
+    }
+
+    .result {
+        position: absolute;
+        margin-top: 35%;
+        left: 34.5%;
+    }
+
+    .choice {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .picked .card {
+        width: 145px;
+        height: 150px;
+    }
+
+    .picked .card:before {
+        width: 120px;
+        height: 120px;
+    }
+
+    .modal {
+        max-width: inherit;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 0px;
+    }
+
+    .modal .rules {
+        margin-bottom: 0;
+        margin-top: 5%;
+        text-align: center;
+    }
+
+    .modal .content {
+        position: initial;
+    }
+
+    .modal .close {
+        position: initial;
+        text-align: center;
+        right: 0;
+        margin-top: 15%;
+    }
+
+    .modal-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+
+    .card {
+        width: 90px;
+        height: 90px;
+    }
+
+    .card::before {
+        width: 70px;
+        height: 70px;
+
+    }
+
+    .picked .card {
+        width: 135px;
+        height: 140px;
+    }
+
+    .picked .card:before {
+        width: 110px;
+        height: 110px;
+    }
+
+    .card.scissors {
+        top: 5%;
+        left: 42%;
+    }
+
+    .card.paper {
+        left: 65%;
+    }
+
+    .card.rock {
+        top: 72%;
+        left: 56%;
+    }
+
+    .card.lizard {
+        top: 72%;
+        left: 26%;
+    }
+
+    .card.spock {
+        left: 19%;
+    }
+
+    .result {
+        margin-top: 40%;
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    .rules-container button {
+        border-radius: 5px;
+        padding: 2% 1.5%;
+        font-size: 1em;
+        margin-top: 15%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    header {
+        border-radius: 10px;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .score {
+        border-radius: 5px;
+    }
+
+    .score p {
+        font-size: 2em;
+    }
+
+    .card-container {
+        height: 400px;
+        background-size: 250px;
+    }
+
+    .card.scissors {
+        left: 40%;
+    }
+
+    .card.paper {
+        left: 62%;
+    }
+
+    .card.rock {
+        left: 52%;
+    }
+
+    .card.lizard {
+        left: 24%;
+    }
+
+    .card.spock {
+        left: 16%;
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    .result {
+        margin-top: 55%;
+    }
+
+        .modal .close {
+            margin-top: 25%;
+        }
+}
+
+@media only screen and (max-width: 375px) {
+    header {
+        border-radius: 5px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-size: 1em;
+    }
+
+
+    .score {
+        border-radius: 5px;
+    }
+
+    .score p {
+        font-size: 1.8em;
+    }
+
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+
+    .card::before {
+        width: 60px;
+        height: 60px;
+
+    }
+
+    .picked .card {
+        width: 105px;
+        height: 105px;
+    }
+
+    .picked .card:before {
+        width: 85px;
+        height: 85px;
+    }
+
+    .card-container {
+        background-size: 200px;
+    }
+
+    .card.scissors {
+        top: 18%;
+        left: 40%;
+    }
+
+    .card.paper {
+        top: 35%;
+        left: 64%;
+    }
+
+    .card.rock {
+        top: 62%;
+        left: 55%;
+    }
+
+    .card.lizard {
+        top: 62%;
+        left: 25%;
+    }
+
+    .card.spock {
+        top: 35%;
+        left: 15%;
+    }
+
+    .result {
+        margin-top: 50%;
+    }
+
+    .title {
+        font-size: 1.2em;
+    }
+
+    .result button {
+        width: 72%;
+    }
+
+    .modal .rules {
+        margin: 10%;
+    }
+
+    .modal .content img {
+        width: 90%;
+    }
+
+    .modal .close {
+        margin-top: 30%;
+    }
+}

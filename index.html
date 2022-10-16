@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+
+  <title>NesDevs| Rock, Paper, Scissors, Lizard and Spock</title>
+
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>
+          Rock <br>
+          Paper <br>
+          Scissors <br>
+          Lizard <br>
+          Spock
+        </h1>
+      </div>
+
+      <div class="score">
+        <h2>Score</h2>
+        <p class="score-count"></p>
+      </div>
+    </header>
+
+    <section class="card-container ">
+      <div class="card scissors"><img src="/images/icon-scissors.svg" alt="scissors"></div>
+      <div class="card paper"><img src="/images/icon-paper.svg" alt="paper"></div>
+      <div class="card rock"><img src="/images/icon-rock.svg" alt="rock"></div>
+      <div class="card lizard"><img src="/images/icon-lizard.svg" alt="lizard"></div>
+      <div class="card spock"><img src="/images/icon-spock.svg" alt="spock"></div>
+    </section>
+
+    <section class="results-container picked hidden">
+      <div class="choice">
+        <h3>You picked</h3>
+        <div class="user-pick"></div>
+      </div>
+      <div class="result">
+        <h3 class="title"></h3>
+        <button>Play again</button>
+      </div>
+      <div class="choice">
+        <h3>The house picked</h3>
+        <div class="house-pick"></div>
+      </div>
+    </section>
+
+    <section class="rules-container">
+      <button class="rules-btn">Rules</button>
+      <div class="modal-bg"></div>
+      <div class="modal">
+        <div class="modal-layout">
+          <h3 class="rules">Rules</h3>
+          <div class="content">
+            <img src="./images/image-rules-bonus.svg" alt="">
+          </div>
+          <span class="close">
+            <img src="./images/icon-close.svg" alt="">
+          </span>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+  <script src="./script.js"></script>
+</body>
+
+</html>
